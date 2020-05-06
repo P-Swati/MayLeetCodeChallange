@@ -1,5 +1,5 @@
-# MayLeetCodeChallange
+# MayLeetCodeChallenge
 
-This repository contains solutions to the May Leetcode Challange 2020.
+This repository contains solutions to the May Leetcode Challenge 2020.
 
 Primary programming language : Python 3.
