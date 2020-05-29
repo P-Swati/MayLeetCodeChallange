@@ -43,11 +43,6 @@ class Solution:
 # b) we can track which nodes are currently under process, and only an edge to nodes being currently processed (visited=1) ( and not those nodes
 #    were processed in the past (visited=2)) marks the presence of cycle.
 
-#approach 1: in dfs, if an edge to a node which is already visited **within cur recursion stack** is encountered, then there is a cycle.
-# 0:unprocessed
-# 1:under processing
-# 2:completely processed
-
 class Solution:
     
     def detectCycle(self,start,adjList,visited):
