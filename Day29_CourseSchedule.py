@@ -83,3 +83,44 @@ class Solution:
                     break
                     
         return not ans
+
+#approach 3: topological sort (kahn's algorithm)
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        
+        # construct adjList and indegrees dict
+        indegree={}
+        adjList=collections.defaultdict(list)
+        
+        for i in prerequisites:
+            if(i[0] not in indegree.keys()):
+                indegree[i[0]]=1
+            else:
+                indegree[i[0]]+=1
+            adjList[i[1]].append(i[0])
+            
+        print(indegree)
+        print(adjList)
+            
+        #BFS : topo sort
+        
+        queue=deque()
+        
+        #add all nodes with indegree=0 to queue
+        for i in range(numCourses):
+            if(i not in indegree.keys()): #indegree =0
+                queue.append(i)
+         
+        # remove one node from queue, and reduce indegrees of its adj vertices by 1, if the also become 0, add them to the queue as well, 
+        visitedCount=0
+                
+        while(queue):
+            cur=queue.popleft()
+            visitedCount+=1
+            for i in adjList[cur]:
+                indegree[i]-=1
+                if(indegree[i]==0):
+                    queue.append(i)
+                    
+        
+        return visitedCount == numCourses #if all the nodes were visited, it means no cycle
